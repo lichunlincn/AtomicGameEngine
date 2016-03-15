@@ -27,7 +27,7 @@ const int TAB_SPACE = 4;
 const char *special_char_newln = "¶";		// 00B6 PILCROW SIGN
 const char *special_char_space = "·";		// 00B7 MIDDLE DOT
 const char *special_char_tab = "»";		// 00BB RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-const char *special_char_password = "•";	// 2022 BULLET
+const char *special_char_password = "*";	// 2022 BULLET
 
 static bool is_space(int8 c)
 {

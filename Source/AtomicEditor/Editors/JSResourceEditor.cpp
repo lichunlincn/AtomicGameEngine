@@ -59,18 +59,18 @@ JSResourceEditor ::JSResourceEditor(Context* context, const String &fullpath, UI
     String url = "file:///" + codeEditorDir;
 #endif
 
-    webView_ = new UIWebView(context_, url);
-    webClient_ = webView_->GetWebClient();
-    messageHandler_ = new WebMessageHandler(context_);
-    webClient_->AddMessageHandler(messageHandler_);
+    //webView_ = new UIWebView(context_, url);
+    //webClient_ = webView_->GetWebClient();
+	/*messageHandler_ = new WebMessageHandler(context_);
+	webClient_->AddMessageHandler(messageHandler_);
 
-    webView_->GetWebTexture2D()->SetClearColor(Color(.23f, .23f, .23f, 1));
+	webView_->GetWebTexture2D()->SetClearColor(Color(.23f, .23f, .23f, 1));
 
-    SubscribeToEvent(webClient_, E_WEBVIEWLOADEND, HANDLER(JSResourceEditor, HandleWebViewLoadEnd));
-    SubscribeToEvent(messageHandler_, E_WEBMESSAGE, HANDLER(JSResourceEditor, HandleWebMessage));
+	SubscribeToEvent(webClient_, E_WEBVIEWLOADEND, HANDLER(JSResourceEditor, HandleWebViewLoadEnd));
+	SubscribeToEvent(messageHandler_, E_WEBMESSAGE, HANDLER(JSResourceEditor, HandleWebMessage));
 
 
-    c->AddChild(webView_->GetInternalWidget());
+	c->AddChild(webView_->GetInternalWidget());*/
 
 }
 
@@ -81,37 +81,37 @@ JSResourceEditor::~JSResourceEditor()
 
 void JSResourceEditor::HandleWebViewLoadEnd(StringHash eventType, VariantMap& eventData)
 {    
-    webClient_->ExecuteJavaScript(ToString("loadCode(\"atomic://resources/%s\");", fullpath_.CString()));
+    //webClient_->ExecuteJavaScript(ToString("loadCode(\"atomic://resources/%s\");", fullpath_.CString()));
 }
 
 void JSResourceEditor::HandleWebMessage(StringHash eventType, VariantMap& eventData)
 {
-    using namespace WebMessage;
+	/*using namespace WebMessage;
 
-    const String& request = eventData[P_REQUEST].GetString();
-    WebMessageHandler* handler = static_cast<WebMessageHandler*>(eventData[P_HANDLER].GetPtr());
+	const String& request = eventData[P_REQUEST].GetString();
+	WebMessageHandler* handler = static_cast<WebMessageHandler*>(eventData[P_HANDLER].GetPtr());
 
-    if (request == "change")
-    {
-        SetModified(true);
-    }
-    else
-    {
-        JSONValue jvalue;
-        if (JSONFile::ParseJSON(request, jvalue, false))
-        {
-            String message = jvalue["message"].GetString();
-            if (message == "saveCode")
-            {
-                String code = jvalue["payload"].GetString();
-                File file(context_, fullpath_, FILE_WRITE);
-                file.Write((void*) code.CString(), code.Length());
-                file.Close();
-            }
-        }
-    }
+	if (request == "change")
+	{
+		SetModified(true);
+	}
+	else
+	{
+		JSONValue jvalue;
+		if (JSONFile::ParseJSON(request, jvalue, false))
+		{
+			String message = jvalue["message"].GetString();
+			if (message == "saveCode")
+			{
+				String code = jvalue["payload"].GetString();
+				File file(context_, fullpath_, FILE_WRITE);
+				file.Write((void*) code.CString(), code.Length());
+				file.Close();
+			}
+		}
+	}
 
-    handler->Success();
+	handler->Success();*/
 
 }
 
@@ -163,7 +163,7 @@ bool JSResourceEditor::Save()
     if (!modified_)
         return true;
 
-    webClient_->ExecuteJavaScript("saveCode();");
+    //webClient_->ExecuteJavaScript("saveCode();");
 
     SetModified(false);
 

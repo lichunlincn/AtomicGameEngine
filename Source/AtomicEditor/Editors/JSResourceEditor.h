@@ -12,12 +12,12 @@
 using namespace Atomic;
 using namespace tb;
 
-namespace Atomic
-{
-    class UIWebView;
-    class WebClient;
-    class WebMessageHandler;
-}
+//namespace Atomic
+//{
+//    class UIWebView;
+//    class WebClient;
+//    class WebMessageHandler;
+//}
 
 namespace AtomicEditor
 {
@@ -53,9 +53,9 @@ private:
 
     bool BeautifyJavascript(const char* source, String& output);
 
-    SharedPtr<UIWebView> webView_;
-    WeakPtr<WebClient> webClient_;
-    WeakPtr<WebMessageHandler> messageHandler_;
+    //SharedPtr<UIWebView> webView_;
+    //WeakPtr<WebClient> webClient_;
+    //WeakPtr<WebMessageHandler> messageHandler_;
 };
 
 }
